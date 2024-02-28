@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Assistant Librarian</title>
+</head>
+<body>
+    <a href="/"><button>В главное меню</button></a><br>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <p>
+            <label>Введите id книги</label><br>
+            <input type="number" name="book_id" />
+        </p>
+        <p>
+            <label>Введите id пользователя</label><br>
+            <input type="number" name="client_id" />
+        </p>
+        <p>
+            <label>Выберите дату взятия книги</label><br>
+            <input type="date" name="take_date" />
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+</body>
+</html>

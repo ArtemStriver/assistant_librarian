@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Assistant Librarian</title>
+</head>
+<body>
+    <a href="/"><button>В главное меню</button></a><br>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <p>Старое: {{client.name}}</p>
+            <label>Новое имя</label><br>
+            <input type="text" name="name" />
+        </p>
+        <p>
+            <p>Старое: {{client.address}}</p>
+            <label>Новый адрес</label><br>
+            <input type="text" name="address" />
+        </p>
+        <p>
+            <p>Старое: {{client.phone}}</p>
+            <label>Новый телефон</label><br>
+            <input type="text" name="phone" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+</body>
+</html>

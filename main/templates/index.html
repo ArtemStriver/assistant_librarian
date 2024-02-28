@@ -5,41 +5,12 @@
     <title>Assistant Librarian</title>
 </head>
 <body>
-    <form method="POST" action="create/">
-        {% csrf_token %}
-        <p>
-            <label>Введите название</label><br>
-            <input type="text" name="title" />
-        </p>
-        <p>
-            <label>Введите автора</label><br>
-            <input type="text" name="author" />
-        </p>
-        <p>
-            <label>Введите жанр</label><br>
-            <input type="text" name="genre" />
-        </p>
-        <p>
-            <label>Введите количество</label><br>
-            <input type="number" name="count" />
-        </p>
-        <input type="submit" value="Сохранить" >
-    </form>
-    {% if books %}
-    <h2>Список пользователей</h2>
-    <table>
-        <thead><th>id</th><th>Название</th><th>Автор</th><th>Жанр</th><th>Количество</th><th></th></thead>
-        {% for book in books %}
-        <tr>
-            <td>{{ book.id }}</td>
-            <td>{{ book.title }}</td>
-            <td>{{ book.author }}</td>
-            <td>{{ book.genre }}</td>
-            <td>{{ book.count }}</td>
-            <td><a href="edit/{{book.id}}">Изменить</a> | <a href="delete/{{book.id}}">Удалить</a></td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
+    <div style=" display: flex; justify-content: center; gap: 20px;">
+        <h2>Выберите действие</h2>
+        <a href="/library"><button style="margin-top: 25px;">Библиотека</button></a>
+        <a href="/clients"><button style="margin-top: 25px;">Читатели</button></a>
+        <a href="/book_info"><button style="margin-top: 25px;">Взятие/Возврат книг</button></a>
+        <a href="/reports"><button style="margin-top: 25px;">Информация</button></a>
+    </div>
 </body>
 </html>

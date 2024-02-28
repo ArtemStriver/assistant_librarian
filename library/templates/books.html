@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Assistant Librarian</title>
+</head>
+<body>
+    <div>
+        <a href="/"><button>В главное меню</button></a><br>
+        <h2>Список книг</h2>
+
+        <a href="{% url 'create_book' %}"><button>Добавить книгу</button></a>
+
+        {% if books %}
+        <table>
+            <thead>
+            <th>id</th>
+            <th>Название</th>
+            <th>Автор</th>
+            <th>Жанр</th>
+            <th>Количество</th>
+            <th></th>
+            </thead>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.genre }}</td>
+                <td>{{ book.count }}</td>
+                <td><a href="edit/{{book.id}}">Изменить</a> | <a href="delete/{{book.id}}">Удалить</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>

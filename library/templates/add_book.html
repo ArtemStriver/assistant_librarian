@@ -5,7 +5,8 @@
     <title>Assistant Librarian</title>
 </head>
 <body>
-    <form method="POST">
+    <a href="/"><button>В главное меню</button></a><br>
+    <form method="POST" action="">
         {% csrf_token %}
         <p>
             <label>Введите название</label><br>
@@ -23,7 +24,7 @@
             <label>Введите количество</label><br>
             <input type="number" name="count" />
         </p>
-        <input type="submit" value="Сохранить" >
+        <input type="submit" value="Сохранить">
     </form>
 </body>
 </html>

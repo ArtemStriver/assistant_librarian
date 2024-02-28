@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Assistant Librarian</title>
+</head>
+<body>
+    <a href="/"><button>В главное меню</button></a><br>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <p>Старое: {{book.title}}</p>
+            <label>Новое название</label><br>
+            <input type="text" name="title" />
+        </p>
+        <p>
+            <p>Старое: {{book.author}}</p>
+            <label>Новый автора</label><br>
+            <input type="text" name="author" />
+        </p>
+        <p>
+            <p>Старое: {{book.genre}}</p>
+            <label>Новый жанр</label><br>
+            <input type="text" name="genre" />
+        </p>
+        <p>
+            <p>Старое: {{book.count}}</p>
+            <label>Новое количество</label><br>
+            <input type="number" name="count" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+</body>
+</html>

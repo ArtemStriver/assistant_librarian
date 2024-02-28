@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Assistant Librarian</title>
+</head>
+<body>
+    <div>
+        <a href="/"><button>В главное меню</button></a><br>
+        <h2>Информация о книгах</h2>
+
+        <a href="{% url 'take_book' %}"><button>Добавить запись о взятии книги</button></a>
+
+        {% if book_info %}
+        <table>
+            <thead>
+            <th>id записи</th>
+            <th>id книги</th>
+            <th>id читателя</th>
+            <th>Дата взятия книги</th>
+            <th>Дата возврата книги</th>
+            <th></th>
+            </thead>
+            {% for info in book_info %}
+            <tr>
+                <td>{{ info.id }}</td>
+                <td>{{ info.book_id.id }}</td>
+                <td>{{ info.client_id.id }}</td>
+                <td>{{ info.take_date }}</td>
+                <td>{{ info.return_date }}</td>
+                {% if not info.return_date %}
+                    <td><a href="return_book/{{info.id}}"><button>Добавить запись о возврате книги</button></a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>
