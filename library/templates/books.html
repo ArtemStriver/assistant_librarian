@@ -5,7 +5,7 @@
     <title>Assistant Librarian</title>
 </head>
 <body>
-    <div>
+    <div style="position: absolute; top: 5%; left: 30%;">
         <a href="/"><button>В главное меню</button></a><br>
         <h2>Список книг</h2>
 
@@ -27,7 +27,7 @@
                 <td>{{ book.title }}</td>
                 <td>{{ book.author }}</td>
                 <td>{{ book.genre }}</td>
-                <td>{{ book.count }}</td>
+                <td>{{ book.book_count }}</td>
                 <td><a href="edit/{{book.id}}">Изменить</a> | <a href="delete/{{book.id}}">Удалить</a></td>
             </tr>
             {% endfor %}

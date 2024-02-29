@@ -4,13 +4,13 @@
     <meta charset="utf-8" />
     <title>Assistant Librarian</title>
 </head>
-<body>
+<body style="position: absolute; top: 5%; left: 30%;">
     <a href="/"><button>В главное меню</button></a><br>
     <form method="POST" action="">
         {% csrf_token %}
         <p>
             <label>Введите имя</label><br>
-            <input type="text" name="name" />
+            <input type="text" name="client_name" />
         </p>
         <p>
             <label>Введите адрес</label><br>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Assistant Librarian</title>
+</head>
+<body>
+    <div style="position: absolute; top: 5%; left: 30%;">
+        <a href="/"><button>В главное меню</button></a><br><br>
+        <a href="/reports"><button>В меню отчетов</button></a><br><br>
+
+        {{ title }}<br><br>
+
+        {% if data %}
+            {% for record in data %}
+                {{ record }}<br>
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>

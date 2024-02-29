@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>Assistant Librarian</title>
 </head>
-<body>
+<body style="position: absolute; top: 5%; left: 30%;">
     <a href="/"><button>В главное меню</button></a><br>
     <form method="POST">
         {% csrf_token %}
@@ -24,9 +24,9 @@
             <input type="text" name="genre" />
         </p>
         <p>
-            <p>Старое: {{book.count}}</p>
+            <p>Старое: {{book.book_count}}</p>
             <label>Новое количество</label><br>
-            <input type="number" name="count" />
+            <input type="number" name="book_count" />
         </p>
         <input type="submit" value="Сохранить" >
     </form>

@@ -18,7 +18,7 @@ def view_clients(request):
 def create(request):
     if request.method == "POST":
         client = Client()
-        client.name = request.POST.get("name")
+        client.client_name = request.POST.get("client_name")
         client.address = request.POST.get("address")
         client.phone = request.POST.get("phone")
         client.save()
@@ -32,7 +32,7 @@ def edit(request, id):
         client = Client.objects.get(id=id)
 
         if request.method == "POST":
-            client.name = request.POST.get("name")
+            client.client_name = request.POST.get("client_name")
             client.address = request.POST.get("address")
             client.phone = request.POST.get("phone")
             client.save()

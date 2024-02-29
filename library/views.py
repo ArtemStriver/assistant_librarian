@@ -21,7 +21,7 @@ def create(request):
         book.title = request.POST.get("title")
         book.author = request.POST.get("author")
         book.genre = request.POST.get("genre")
-        book.count = request.POST.get("count")
+        book.book_count = request.POST.get("book_count")
         book.save()
         return HttpResponseRedirect("/library")
 
@@ -36,7 +36,7 @@ def edit(request, id):
             book.title = request.POST.get("title")
             book.author = request.POST.get("author")
             book.genre = request.POST.get("genre")
-            book.count = request.POST.get("count")
+            book.book_count = request.POST.get("book_count")
             book.save()
             return HttpResponseRedirect("/library")
         else:

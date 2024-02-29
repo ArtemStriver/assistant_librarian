@@ -8,28 +8,34 @@ from library.models import Book
 
 
 def view_book_info(request):
-    # with connection.cursor() as cursor:
-    #     cursor.execute("SELECT * FROM main_book")
-    #     books = cursor.fetchall()
-    # print(books, "OK")
-
     book_info = BookInfo.objects.all()
     return render(request, "book_info.html", {"book_info": book_info})
 
 
 def take_book(request):
+
     if request.method == "POST":
         try:
-            # TODO делать проверку количества доступных книг и
-            #  убавлять значение при взятии книги, если книга не доступна - выбрасыват ошибку
             book_info = BookInfo()
             book_id = int(request.POST.get("book_id"))
             client_id = int(request.POST.get("client_id"))
+
             book = Book.objects.get(id=book_id)
             client = Client.objects.get(id=client_id)
+
+            if book.book_count == 0:
+                return HttpResponseBadRequest(
+                    "<h2>Книг нет в наличии, попробуйте взять <a href='/book_info'>другую</a></h2>"
+                )
             book_info.book_id = book
             book_info.client_id = client
             book_info.take_date = request.POST.get("take_date")
+
+            book.book_count = book.book_count - 1
+            client.visit_date = request.POST.get("take_date")
+
+            book.save()
+            client.save()
             book_info.save()
             return HttpResponseRedirect("/book_info")
         except Exception as exc:
@@ -47,6 +53,14 @@ def return_book(request, id):
 
         if request.method == "POST":
             book_info.return_date = request.POST.get("return_date")
+            book = Book.objects.get(id=book_info.book_id.id)
+            client = Client.objects.get(id=book_info.client_id.id)
+
+            book.book_count = book.book_count + 1
+            client.visit_date = request.POST.get("return_date")
+
+            book.save()
+            client.save()
             book_info.save()
             return HttpResponseRedirect("/book_info")
         else:
