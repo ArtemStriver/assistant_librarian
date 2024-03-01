@@ -5,6 +5,9 @@ from library.models import Book
 
 
 class BookInfo(models.Model):
+    """
+    Модель таблицы с информацией о факте взятия и возврата книг читателями.
+    """
     book_id = models.ForeignKey(Book,
                                 related_name='book_client',
                                 on_delete=models.CASCADE,

@@ -8,12 +8,13 @@ from library.models import Book
 
 
 def view_book_info(request):
+    """Функция отображения меню book_info."""
     book_info = BookInfo.objects.all()
     return render(request, "book_info.html", {"book_info": book_info})
 
 
 def take_book(request):
-
+    """Функция добавления новой записи о взятии книги."""
     if request.method == "POST":
         try:
             book_info = BookInfo()
@@ -48,6 +49,7 @@ def take_book(request):
 
 
 def return_book(request, id):
+    """Функция добавления записи о возврате книги."""
     try:
         book_info = BookInfo.objects.get(id=id)
 

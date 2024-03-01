@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 
+"""Настройки маршрутов для взаимодействия с модулями."""
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("main.urls")),

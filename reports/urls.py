@@ -2,6 +2,8 @@ from django.urls import path
 
 from reports import views
 
+"""Настройки маршрутов для взаимодействия с функционалом reports."""
+
 urlpatterns = [
     path("", views.view_reports),
     path("report1/", views.report1),

@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 
 def view_reports(request):
+    """Функция отображения меню reports."""
     return render(request, "reports_menu.html")
 
 

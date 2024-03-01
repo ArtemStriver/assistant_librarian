@@ -1,21 +1,17 @@
-from django.db import connection
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 
 from library.models import Book
 
 
 def view_books(request):
-    # with connection.cursor() as cursor:
-    #     cursor.execute("SELECT * FROM main_book")
-    #     books = cursor.fetchall()
-    # print(books, "OK")
-
+    """Функция отображения меню library."""
     books = Book.objects.all()
     return render(request, "books.html", {"books": books})
 
 
 def create(request):
+    """Функция по добавлению новой книги."""
     if request.method == "POST":
         book = Book()
         book.title = request.POST.get("title")
@@ -29,6 +25,7 @@ def create(request):
 
 
 def edit(request, id):
+    """Функция по изменению данных книги."""
     try:
         book = Book.objects.get(id=id)
 
@@ -46,6 +43,7 @@ def edit(request, id):
 
 
 def delete(request, id):
+    """Функция по удалению книги."""
     try:
         book = Book.objects.get(id=id)
         book.delete()

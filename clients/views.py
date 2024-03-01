@@ -6,16 +6,13 @@ from clients.models import Client
 
 
 def view_clients(request):
-    # with connection.cursor() as cursor:
-    #     cursor.execute("SELECT * FROM main_book")
-    #     books = cursor.fetchall()
-    # print(books, "OK")
-
+    """Функция отображения меню clients."""
     clients = Client.objects.all()
     return render(request, "clients.html", {"clients": clients})
 
 
 def create(request):
+    """Функция по добавлению нового читателя."""
     if request.method == "POST":
         client = Client()
         client.client_name = request.POST.get("client_name")
@@ -28,6 +25,7 @@ def create(request):
 
 
 def edit(request, id):
+    """Функция по изменению данных читателя."""
     try:
         client = Client.objects.get(id=id)
 
@@ -44,6 +42,7 @@ def edit(request, id):
 
 
 def delete(request, id):
+    """Функция по удалению читателя."""
     try:
         client = Client.objects.get(id=id)
         client.delete()
